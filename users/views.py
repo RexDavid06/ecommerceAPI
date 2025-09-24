@@ -18,10 +18,10 @@ class RegisterView(APIView):
     
 class LoginView(APIView):
     def post(self, request):
-        email = request.data.get("email")
+        username = request.data.get("username")
         password = request.data.get("password")
 
-        user = authenticate(email=email, password=password)
+        user = authenticate(username=username, password=password)
 
         if user is not None:
             refresh = RefreshToken.for_user(user)
@@ -31,4 +31,5 @@ class LoginView(APIView):
                 "access_token": str(refresh.access_token)
                 }, status=HTTP_200_OK
             )
+        return Response({"detail": "Invalid credentials"}, status=HTTP_401_UNAUTHORIZED)
 
