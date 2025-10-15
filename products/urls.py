@@ -7,5 +7,5 @@ urlpatterns = [
     path('category/update/<int:id>/', views.CategoryRetrieveUpdateDestroyView.as_view(), name='category-update'),
     path('', views.ProductListView.as_view(), name='products'),
     path('create/', views.ProductCreateView.as_view(), name='product-create'),
-    path('/update/<int:id>/', views.ProductRetrieveUpdateDestroyView.as_view(), name='product-update')
+    path('update/<int:id>/', views.ProductRetrieveUpdateDestroyView.as_view(), name='product-update')
 ]
